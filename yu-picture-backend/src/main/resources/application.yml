@@ -12,9 +12,9 @@ spring:
   # 数据库配置
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/yu_picture
+    url: jdbc:mysql://localhost:3306/booboil_picture
     username: root
-    password: 123456
+    password: 66035912345
   # Redis 配置
   redis:
     database: 0
@@ -33,18 +33,18 @@ spring:
   # 空间图片分表
   shardingsphere:
     datasource:
-      names: yu_picture
-      yu_picture:
+      names: booboil_picture
+      booboil_picture:
         type: com.zaxxer.hikari.HikariDataSource
         driver-class-name: com.mysql.cj.jdbc.Driver
-        url: jdbc:mysql://localhost:3306/yu_picture
+        url: jdbc:mysql://localhost:3306/booboil_picture
         username: root
-        password: 123456
+        password: 66035912345
     rules:
       sharding:
         tables:
           picture:
-            actual-data-nodes: yu_picture.picture # 动态分表
+            actual-data-nodes: booboil_picture.picture # 动态分表
             table-strategy:
               standard:
                 sharding-column: spaceId
@@ -54,7 +54,7 @@ spring:
             type: CLASS_BASED
             props:
               strategy: standard
-              algorithmClassName: com.yupi.yupicturebackend.manager.sharding.PictureShardingAlgorithm
+              algorithmClassName: com.booboil.booboilpicturebackend.manager.sharding.PictureShardingAlgorithm
     props:
       sql-show: true
 mybatis-plus:
@@ -79,7 +79,7 @@ knife4j:
       default:
         api-rule: package
         api-rule-resources:
-          - com.yupi.yupicturebackend.controller
+          - com.booboil.booboilpicturebackend.controller
 ## 对象存储配置（需要从腾讯云获取）
 #cos:
 #  client:
